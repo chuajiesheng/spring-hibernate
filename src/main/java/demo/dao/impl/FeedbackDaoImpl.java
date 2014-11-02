@@ -14,17 +14,10 @@ import java.util.List;
 @Repository("feedbackDaoImpl")
 public class FeedbackDaoImpl implements FeedbackDao {
 
+	private final SessionFactory sessionFactory;
+
     @Autowired
-	private SessionFactory sessionFactory;
-
-    public FeedbackDaoImpl() {
-    }
-
     public FeedbackDaoImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
