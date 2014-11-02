@@ -1,22 +1,35 @@
-package dao.impl;
+package demo.dao.impl;
 
-import java.util.List;
-
-import dao.FeedbackDao;
-import model.Feedback;
+import demo.dao.FeedbackDao;
+import demo.domain.Feedback;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository("feedbackDaoImpl")
+@Configurable
 public class FeedbackDaoImpl implements FeedbackDao {
 
 	private SessionFactory sessionFactory;
 
+    public FeedbackDaoImpl() {
+    }
+
+    @Autowired
+    public FeedbackDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-    
-	@Override
+
+    @Override
 	public void save(Feedback p) {
 		Session session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -29,9 +42,9 @@ public class FeedbackDaoImpl implements FeedbackDao {
 	@Override
 	public List<Feedback> list() {
 		Session session = this.sessionFactory.openSession();
-		List<Feedback> personList = session.createQuery("from Person").list();
+		List<Feedback> feedbackList = session.createQuery("from Feedback").list();
 		session.close();
-		return personList;
+		return feedbackList;
 	}
 
 }

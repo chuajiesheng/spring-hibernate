@@ -1,7 +1,7 @@
-package main;
+package demo.web;
 
-import dao.FeedbackDao;
-import model.Feedback;
+import demo.dao.FeedbackDao;
+import demo.domain.Feedback;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
@@ -9,22 +9,21 @@ import java.util.List;
 public class SpringHibernateMain {
 
 	public static void main(String[] args) {
-
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 		
-		FeedbackDao personDAO =
+		FeedbackDao feedbackDao =
                 context.getBean(FeedbackDao.class);
 		
-		Feedback person = new Feedback();
-        person.setId(5);
-		person.setName("Pankaj");
-        person.setMessage("India");
+		Feedback feedback = new Feedback();
+        feedback.setId(6);
+		feedback.setName("From Pankaj");
+        feedback.setMessage("At India");
 		
-		personDAO.save(person);
+		feedbackDao.save(feedback);
 		
-		System.out.println("Person::"+person);
+		System.out.println("Person::"+feedback);
 		
-		List<Feedback> list = personDAO.list();
+		List<Feedback> list = feedbackDao.list();
 		
 		for(Feedback p : list){
 			System.out.println("Person List::"+p);

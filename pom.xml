@@ -23,7 +23,7 @@
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
 
-        <start-class>main.Application</start-class>
+        <start-class>demo.Application</start-class>
 	</properties>
 
     <parent>
