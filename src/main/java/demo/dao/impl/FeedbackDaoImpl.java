@@ -12,15 +12,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("feedbackDaoImpl")
-@Configurable
 public class FeedbackDaoImpl implements FeedbackDao {
 
+    @Autowired
 	private SessionFactory sessionFactory;
 
     public FeedbackDaoImpl() {
     }
 
-    @Autowired
     public FeedbackDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
